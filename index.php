@@ -2,5 +2,7 @@
 
 require_once "app/config/config.php";
 
-echo "Hello World";
+?>
+
+<a href="register.php">Sign up</a>
 
