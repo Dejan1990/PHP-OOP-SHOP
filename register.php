@@ -1,3 +1,34 @@
+<?php
+
+require_once "app/config/config.php";
+require_once "app/classes/User.php";
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = $_POST['name'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $user = new User();
+
+    $created = $user->create($name, $username, $email, $password);
+
+    if ($created) {
+        $_SESSION['message']['type'] = "success"; // success or danger
+        $_SESSION['message']['text'] = "Uspesno registrovan nalog!";
+        //"<script>window.location.href = 'index.php';</script>";
+        header("Location: index.php");
+        exit();
+    } else {
+        $_SESSION['message']['type'] = "danger"; // success or danger
+        $_SESSION['message']['text'] = "Greska!";
+        header("Location: register.php");
+       // "<script>window.location.href = 'register.php';</script>";
+        exit();
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
