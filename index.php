@@ -18,7 +18,7 @@ require_once "app/config/config.php";
 
     <div class="container">
         <?php if(isset($_SESSION['message'])) : ?>
-            <div class="alert alert-<?= $_SESSION['message']['type']; ?> alert-dismissible faded">
+            <div class="alert alert-<?= $_SESSION['message']['type']; ?> alert-dismissible fade show" role="alert">
                 <?php
                     echo $_SESSION['message']['text'];
                     unset($_SESSION['message']);
