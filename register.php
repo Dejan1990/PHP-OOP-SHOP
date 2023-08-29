@@ -3,14 +3,17 @@
 require_once "app/config/config.php";
 require_once "app/classes/User.php";
 
+$user = new User();
+if ($user->is_logged()) {
+    header("Location: index.php");
+    exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-
-    $user = new User();
 
     $created = $user->create($name, $username, $email, $password);
 
