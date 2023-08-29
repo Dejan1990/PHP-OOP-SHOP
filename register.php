@@ -3,6 +3,7 @@
 require_once "app/config/config.php";
 require_once "app/classes/User.php";
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $username = $_POST['username'];
@@ -29,9 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
-
 <?php require_once "inc/header.php"; ?>
-
 <h1 class="mt-5 mb-3">Registration</h1>
 
 <form method="post" action="">

@@ -1,7 +1,4 @@
-<?php
-require_once "app/classes/User.php";
-$user = new User();
-?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
     <div class="container">
         <a href="#" class="navbar-brand">Cysecor Shop</a>
