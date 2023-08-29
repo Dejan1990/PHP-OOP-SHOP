@@ -50,4 +50,13 @@ class User
 
         return false;
     }
+
+    public function is_logged()
+    {
+        if (isset($_SESSION['user_id'])) {
+            return true;
+        }
+
+        return false;
+    }
 }
