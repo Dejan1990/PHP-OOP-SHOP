@@ -59,4 +59,9 @@ class User
 
         return false;
     }
+
+    public function logout()
+    {
+        unset($_SESSION['user_id']);
+    }
 }
