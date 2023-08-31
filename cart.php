@@ -25,9 +25,9 @@ $cart_items = $cart->get_cart_items();
     <tbody>
         <?php foreach ($cart_items as $item): ?>
             <tr>
-                <td><?= htmlspecialchars($item['name']) ?></td>
-                <td><?= htmlspecialchars($item['size']) ?></td>
-                <td>$<?= htmlspecialchars($item['price']) ?></td>
+                <td class="pt-3"><?= htmlspecialchars($item['name']) ?></td>
+                <td class="pt-3"><?= htmlspecialchars($item['size']) ?></td>
+                <td class="pt-3">$<?= htmlspecialchars($item['price']) ?></td>
                 <td>
                     <img src="<?= htmlspecialchars($item['image']) ?>" height="50">
                 </td>
@@ -35,4 +35,6 @@ $cart_items = $cart->get_cart_items();
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<a href="checkout.php" class="btn btn-success">Checkout</a>
 <?php require_once "inc/footer.php"; ?>
