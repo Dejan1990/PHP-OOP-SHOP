@@ -1,6 +1,5 @@
 <?php
 require_once "app/config/config.php";
-require_once "app/classes/Cart.php";
 require_once "app/classes/User.php";
 require_once "app/classes/Order.php";
 
@@ -10,12 +9,9 @@ if (!$user->is_logged()) {
     exit();
 }
 
-$cart = new Cart();
-$cart_items = $cart->get_cart_items(); 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $order = new Order(); 
-    $order = $order->create($cart_items);
+    $order = $order->create();
 
     if ($order) {}
 }

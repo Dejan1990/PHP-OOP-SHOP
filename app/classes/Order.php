@@ -1,6 +1,8 @@
-<?php 
+<?php
 
-class Order 
+require_once "Cart.php";
+
+class Order extends Cart
 {
     protected $conn;
 
@@ -10,8 +12,8 @@ class Order
         $this->conn = $conn;
     }
 
-    public function create($cart_items)
+    public function create()
     {
-        var_dump($cart_items);
+        var_dump($this->get_cart_items());
     }
 }
