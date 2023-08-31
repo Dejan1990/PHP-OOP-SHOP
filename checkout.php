@@ -2,6 +2,7 @@
 require_once "app/config/config.php";
 require_once "app/classes/Cart.php";
 require_once "app/classes/User.php";
+require_once "app/classes/Order.php";
 
 $user = new User();
 if (!$user->is_logged()) {
@@ -11,6 +12,13 @@ if (!$user->is_logged()) {
 
 $cart = new Cart();
 $cart_items = $cart->get_cart_items(); 
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $order = new Order(); 
+    $order = $order->create($cart_items);
+
+    if ($order) {}
+}
 ?>
 
 <?php require_once "inc/header.php"; ?>
