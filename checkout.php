@@ -10,8 +10,10 @@ if (!$user->is_logged()) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $delivery_address = $_POST['country'] . ", " . $_POST['city'] . ", " . $_POST['zip'] . ", " . $_POST['address'];
     $order = new Order(); 
-    $order = $order->create();
+    $order = $order->create($delivery_address);
 
     if ($order) {}
 }
