@@ -19,6 +19,7 @@ $cart_items = $cart->get_cart_items();
             <th scope="col">Product Name</th>
             <th scope="col">Size</th>
             <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
             <th scope="col">Image</th>
         </tr>
     </thead>
@@ -28,6 +29,7 @@ $cart_items = $cart->get_cart_items();
                 <td class="pt-3"><?= htmlspecialchars($item['name']) ?></td>
                 <td class="pt-3"><?= htmlspecialchars($item['size']) ?></td>
                 <td class="pt-3">$<?= htmlspecialchars($item['price']) ?></td>
+                <td class="pt-3"><?= htmlspecialchars($item['quantity']) ?></td>
                 <td>
                     <img src="<?= htmlspecialchars($item['image']) ?>" height="50">
                 </td>

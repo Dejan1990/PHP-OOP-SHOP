@@ -7,17 +7,20 @@ $product = new Product();
 $product = $product->read($_GET['product_id']);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $product_id = $product['product_id'];
+    
     if (!isset($_SESSION['user_id'])) {
         header("Location: login.php");
         $_SESSION['message']['type'] = 'danger';
         $_SESSION['message']['text'] = 'Morate biti ulogovani da bi kupili proizvod!';
         exit();
     }
+
+    $product_id = $product['product_id'];
     $user_id = $_SESSION['user_id'];
+    $quantity = $_POST['quantity'];
 
     $cart = new Cart();
-    $cart->add_to_cart($product_id, $user_id);
+    $cart->add_to_cart($product_id, $user_id, $quantity);
 
     header("Location: cart.php");
     exit();
@@ -41,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?= $product['price'] ?>
         </p>
         <form action="" method="POST">
+            <input type="number" name="quantity" id="quantity">
             <button type="submit" class="btn btn-primary">Add to cart</button>
         </form>
     </div>
