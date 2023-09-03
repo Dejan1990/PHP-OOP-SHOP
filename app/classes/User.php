@@ -60,6 +60,22 @@ class User
         return false;
     }
 
+    public function is_admin()
+    {
+        $sql = "SELECT * FROM users WHERE user_id = ? AND is_admin = 1";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $_SESSION['user_id']);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function logout()
     {
         unset($_SESSION['user_id']);
