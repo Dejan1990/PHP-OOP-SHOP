@@ -15,7 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $order = new Order(); 
     $order = $order->create($delivery_address);
 
-    if ($order) {}
+    $_SESSION['message']['type'] = "success"; // success or danger
+    $_SESSION['message']['text'] = "Uspesno naruceni proizvodi!";
+    header("Location: orders.php");
+    exit();
 }
 ?>
 

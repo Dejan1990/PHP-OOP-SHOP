@@ -30,4 +30,32 @@ class Order extends Cart
             $stmt->execute();
         }
     }
+
+    public function get_orders()
+    {
+        $user_id = $_SESSION['user_id'];
+        $sql = "
+            SELECT 
+                orders.order_id,
+                orders.delivery_address,
+                orders.created_at,
+                order_items.quantity,
+                products.name,
+                products.size,
+                products.price,
+                products.image
+            FROM orders
+            INNER JOIN order_items ON orders.order_id = order_items.order_id
+            INNER JOIN products ON order_items.product_id = products.product_id
+            WHERE orders.user_id = ?
+            ORDER BY orders.created_at DESC
+        ";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
