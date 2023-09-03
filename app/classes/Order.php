@@ -29,6 +29,8 @@ class Order extends Cart
             $stmt->bind_param("iis", $order_id, $item['product_id'], $item['quantity']);
             $stmt->execute();
         }
+
+        $this->destroy_cart();
     }
 
     public function get_orders()
