@@ -17,6 +17,14 @@ class Product
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function create($name, $price, $size, $image)
+    {
+        $query = "INSERT INTO products (name, price, size, image) VALUES (?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("ssss", $name, $price, $size, $image);
+        $stmt->execute();
+    }
+
     public function read($product_id)
     {
         $sql = "SELECT * FROM products WHERE product_id = ?";
@@ -26,5 +34,15 @@ class Product
 
         $result = $stmt->get_result();
         return $result->fetch_assoc();
+    }
+
+    public function update()
+    {
+        
+    }
+
+    public function delete()
+    {
+        
     }
 }
