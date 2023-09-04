@@ -46,7 +46,7 @@ class Product
 
     public function delete($product_id)
     {
-        $query = "DELETE FROM products WHERE $product_id = ?";
+        $query = "DELETE FROM products WHERE product_id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("i", $product_id);
         $stmt->execute();
