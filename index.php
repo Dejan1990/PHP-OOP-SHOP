@@ -8,7 +8,7 @@ $products = $products->fetch_all();
     <?php foreach ($products as $product): ?>
         <div class="col-md-4">
             <div class="card">
-                <img src="images/<?= $product['image'] ?>" class="card-img-top" alt="<?= $product['name'] ?>">
+                <img src="public/product_images/<?= $product['images'] ?>" class="card-img-top" alt="<?= $product['name'] ?>">
                 <div class="card-body">
                     <h5 class="card-title"><?= $product['name'] ?></h5>
                     <p class="card-text">Size: <?= $product['size'] ?></p>
