@@ -36,9 +36,12 @@ class Product
         return $result->fetch_assoc();
     }
 
-    public function update()
+    public function update($product_id, $name, $price, $size, $image)
     {
-        
+        $query = "UPDATE products SET name = ?, price = ?, size = ?, image = ? WHERE product_id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("ssssi", $name, $price, $size, $image, $product_id);
+        $stmt->execute();
     }
 
     public function delete()
