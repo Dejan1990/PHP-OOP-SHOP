@@ -44,8 +44,11 @@ class Product
         $stmt->execute();
     }
 
-    public function delete()
+    public function delete($product_id)
     {
-        
+        $query = "DELETE FROM products WHERE $product_id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $product_id);
+        $stmt->execute();
     }
 }
